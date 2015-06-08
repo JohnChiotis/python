@@ -1,0 +1,65 @@
+SUMMARY:
+========================================================================
+Distributor ID:	Ubuntu
+Description:	Ubuntu 14.10
+Release:	14.10
+Codename:	utopic
+Python:         2.7.8
+
+My though was that the functionality can be used by a real time system
+which will be having a heap containing lender's offers and once a user
+is asking for a quote, it will be removing the offers that are needed
+from thea heap giving some time for the user to respond while in the same
+time it continues to serve other quote requests. If a quote is not utilized
+the offers can be back in the heap.
+
+I made the assumption that if a user loans i.e £1000 and there is a request
+for £500 by someone, then the systems lets the lender to loan that amount
+and keep the other £500 for future quotes.
+
+
+HOW TO USE:
+========================================================================
+% ./quote.py market.csv 1000
+Requested amount: £1000
+Rate: 7.0%
+Monthly repayment: £30.88
+Total repayment: £1111.68
+
+% ./quote.py market.csv 100
+Invalid loan amount request
+USAGE: <exe> <lenders file> <load amount>
+
+% ./quote.py market.csv 15000
+Unable to provide a quote - Request amount bigger than total offers
+
+
+
+COVERAGE and UNITTEST:
+========================================================================
+% coverage run testing_quote.py
+% coverage report -m
+
+test_get_equal_quote (__main__.QuoteTester)
+test on quote that matches exactly minimum possibe of lenders ... ok
+test_get_lenders_heap (__main__.QuoteTester)
+test correct creation of lenders offers heap ... ok
+test_loan_bigger_than_possible (__main__.QuoteTester)
+test request of an amount that quote is unavailable ... ok
+test_offer_representation (__main__.QuoteTester)
+test offer's string representation ... ok
+test_quote_rate (__main__.QuoteTester)
+test correct calculation of rate ... ok
+test_split_lenders_avail (__main__.QuoteTester)
+test case of part of lender's available amount exist in a quote ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.008s
+
+OK
+Name            Stmts   Miss  Cover   Missing
+---------------------------------------------
+quote              58      0   100%   
+testing_quote      63      0   100%   
+---------------------------------------------
+TOTAL             121      0   100%   
