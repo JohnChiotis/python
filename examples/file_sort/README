@@ -1,0 +1,81 @@
+SUMMARY:
+========================================================================
+Distributor ID:	Ubuntu
+Description:	Ubuntu 14.10
+Release:	14.10
+Codename:	utopic
+Python:         2.7.8
+
+I created 3 python modules:
+    1. file_sort.py - contains the main class for file sorting
+    2. sorting_methods.py - collection of sorting functions that are used in
+       each sort case
+    3. testing_sort_li.py - contains test cases for the overall functionality
+
+Case1:
+    In case of no memory restriction the script is using either mergesort or 
+    quicksort or the python's list sort.
+
+Case2:
+    In case of limitation of maximum numbers loaded to memory I use an external
+    merge sort solution that used intermediate temporary files, sorted by the
+    in place quick sort and then merged via a heap usage.
+
+
+HOW TO USE:
+========================================================================
+% ./file_sort.py -help
+USAGE: <executable> <input file> [<sort type>]
+
+% ./file_sort.py input
+Result file: input.sorted
+
+% ./file_sort.py input mergesort
+Result file: input.sorted
+
+% ./file_sort.py input external
+Result file: input.sorted
+
+
+COVERAGE and UNITTEST report:
+========================================================================
+% coverage run testing_sort_lib.py 
+
+Setup class: FileSortTestcase
+test_file_default_sort (__main__.FileSortTestcase)
+File sorting with default sorting method ... ok
+test_file_external_sort (__main__.FileSortTestcase)
+File sorting with the external sorting implementation ... ok
+test_file_merge_sort (__main__.FileSortTestcase)
+File sorting with the merge sort implementation ... ok
+test_file_quicksort (__main__.FileSortTestcase)
+File sorting with the quicksort implementation ... ok
+test_invalid_input_file (__main__.FileSortTestcase)
+Test the case of a non existing input file ... ok
+test_invalid_itemslimit (__main__.FileSortTestcase)
+Test the case of invalid memory limit asked ... ok
+lists tested: 111
+
+Setup class: SortingFunctionsTests
+test_default_sort (__main__.SortingFunctionsTests)
+Test the default sorting algorithm implementation ... ok
+test_merge_sort (__main__.SortingFunctionsTests)
+Test the merge sort algorithm implementation ... ok
+test_quicksort (__main__.SortingFunctionsTests)
+Test the quicksort algorithm implementation ... ok
+lists tested: 17292
+
+----------------------------------------------------------------------
+Ran 9 tests in 6.820s
+
+OK
+
+% coverage report -m
+Name               Stmts   Miss  Cover   Missing
+------------------------------------------------
+file_sort             86      1    99%   136
+sorting_methods       47      0   100%   
+testing_sort_lib     102      1    99%   62
+------------------------------------------------
+TOTAL                235      2    99%   
+========================================================================
