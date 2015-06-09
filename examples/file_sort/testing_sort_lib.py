@@ -32,7 +32,7 @@ def get_all_perms(int_array, idx=None):
         for perm in get_all_perms(int_array, idx=idx-1):
             for i in xrange(0, len(perm)+1):
                 new_perm = perm[:]
-                new_perm.insert(i, arraylist[-idx])
+                new_perm.insert(i, int_array[-idx])
                 yield new_perm
 
 
