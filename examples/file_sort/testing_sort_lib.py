@@ -30,10 +30,10 @@ def get_all_perms(int_array, idx=None):
         yield [int_array[-idx]]
     else:
         for perm in get_all_perms(int_array, idx=idx-1):
-            yield [int_array[-idx]]+perm
-            for i in xrange(1, len(perm)):
-                yield perm[:i] + [int_array[-idx]] + perm[i:]
-            yield perm + [int_array[-idx]]
+            for i in xrange(0, len(perm)+1):
+                new_perm = perm[:]
+                new_perm.insert(i, arraylist[-idx])
+                yield new_perm
 
 
 class SortingTestsBase(unittest.TestCase):
