@@ -32,7 +32,7 @@ if __name__ == '__main__':
     print "First way"
     inst1 = Instance('first')
     inst2 = Instance('second')
-    print 'Instances:', inst1, inst2
+    print 'Instances same:', inst1 is inst2
     print 'Vars:', inst1.var, inst2.var
     
     print "\nSecond way"
