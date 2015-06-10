@@ -1,5 +1,3 @@
-# import abc
-
 class MyAbstractMeta(type):
     abstract_items = set()
     def __new__(cls, *a, **k):
@@ -26,10 +24,8 @@ def my_abstract_method_decorator(f):
 
 
 class MyAbstractClass(object):
-    # __metaclass__ = abc.ABCMeta
     __metaclass__ = MyAbstractMeta
 
-    # @abc.abstractmethod
     @my_abstract_method_decorator
     def my_abstract_method(self):
         pass
