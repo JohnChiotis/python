@@ -10,6 +10,7 @@ def pattern_filter(pattern):
     except GeneratorExit:
         print '%sCoroutine Exits\n' % (' '*4)
 
+
 def grep(pattern, lines):
     my_filter = pattern_filter(pattern)
     for line in lines:
