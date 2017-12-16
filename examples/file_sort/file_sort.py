@@ -1,5 +1,6 @@
 #!/usr/bin/python
 """Module containing tools for applying sorting operations in files."""
+
 import os
 import sys
 import heapq
